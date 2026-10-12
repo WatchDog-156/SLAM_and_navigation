@@ -1,0 +1,38 @@
+/**:
+  ros__parameters:
+    common:
+      lid_topic: "/unilidar/cloud"
+      imu_topic: "/unilidar/imu"
+      time_sync_en: false
+
+    preprocess:
+      lidar_type: 2                # 1: Livox, 2: Velodyne/Generic PointCloud2, 3: Ouster
+      scan_line: 16                # Liczba linii/warstw sensora
+      scan_rate: 10                # Częstotliwość skanowania LiDAR-a (Hz)
+      timestamp_unit: 2            # 0: sec, 1: ms, 2: us, 3: ns
+      blind: 0.1                   # Minimalny zasięg odcięcia punktów martwych (w metrach)
+
+    mapping:
+      acc_cov: 0.1
+      gyr_cov: 0.1
+      b_acc_cov: 0.0001
+      b_gyr_cov: 0.0001
+      fov_degree: 360.0
+      det_range: 30.0
+      extrinsic_est_en: false      # Kalibracja fabryczna jest stała i precyzyjna
+
+      # Fabryczna transformacja z układu LiDAR-a do IMU (Unitree L2):
+      extrinsic_T: [-0.007698, -0.014655, 0.00667]
+      extrinsic_R: [1.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0,
+                    0.0, 0.0, 1.0]
+
+    publish:
+      path_en: true                # Publikacja przebytej trajektorii (/path)
+      scan_publish_en: true        # Publikacja zarejestrowanej chmury
+      dense_publish_en: true       # Gęsta chmura punktów
+      scan_bodyframe_pub_en: false
+
+    pcd_save:
+      pcd_save_en: true            # Automatyczny zapis mapy 3D po zamknięciu węzła
+      interval: -1                 # -1 oznacza zapis całej zagregowanej mapy na końcu pracy
