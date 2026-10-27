@@ -9,7 +9,7 @@
       lidar_type: 2                # 1: Livox, 2: Velodyne/Generic PointCloud2, 3: Ouster
       scan_line: 16                # Liczba linii/warstw sensora
       scan_rate: 10                # Częstotliwość skanowania LiDAR-a (Hz)
-      timestamp_unit: 2            # 0: sec, 1: ms, 2: us, 3: ns
+      timestamp_unit: 0            # 0: sec, 1: ms, 2: us, 3: ns
       blind: 0.1                   # Minimalny zasięg odcięcia punktów martwych (w metrach)
 
     mapping:
@@ -32,6 +32,7 @@
       scan_publish_en: true        # Publikacja zarejestrowanej chmury
       dense_publish_en: true       # Gęsta chmura punktów
       scan_bodyframe_pub_en: false
+      map_en: true
 
     pcd_save:
       pcd_save_en: true            # Automatyczny zapis mapy 3D po zamknięciu węzła

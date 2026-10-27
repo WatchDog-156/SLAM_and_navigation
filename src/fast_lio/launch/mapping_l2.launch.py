@@ -6,7 +6,7 @@ from launch_ros.actions import Node
 def generate_launch_description():
     pkg_fast_lio = get_package_share_directory('fast_lio')
     config_path = os.path.join(pkg_fast_lio, 'config', 'unitree_l2.yaml')
-    rviz_cfg_path = os.path.join(pkg_fast_lio, 'rviz_cfg', 'fastlio.rviz')
+    rviz_cfg_path = os.path.join(pkg_fast_lio, 'rviz', 'fastlio.rviz')
 
     return LaunchDescription([
         Node(

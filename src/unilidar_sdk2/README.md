@@ -310,3 +310,17 @@ Specifically, you can refer to our user manual, as well as the following header 
 unitree_lidar_protocol.h
 unitree_lidar_utilities.h
 ```
+
+## 7. Konfiguracja połączenia z lidarem po Ethernecie
+
+```bash
+nmcli con show                      
+sudo nmcli con down "Połączenie przewodowe 1"  
+sudo nmcli con modify "Połączenie przewodowe 1" connection.autoconnect no
+
+sudo nmcli con add type ethernet ifname enp0s31f6 con-name lidar \
+  ipv4.method manual ipv4.addresses 192.168.1.2/24 \
+  ipv4.never-default yes ipv6.method disabled \
+  connection.autoconnect yes connection.autoconnect-priority 100
+sudo nmcli con up lidar
+```
