@@ -20,7 +20,6 @@ def generate_launch_description():
     config_path = LaunchConfiguration('config_path')
     config_file = LaunchConfiguration('config_file')
     rviz_use = LaunchConfiguration('rviz')
-    rviz_cfg = LaunchConfiguration('rviz_cfg')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time', default_value='false',
@@ -39,7 +38,7 @@ def generate_launch_description():
         description='Use RViz to monitor results'
     )
     declare_rviz_config_path_cmd = DeclareLaunchArgument(
-        'rviz_cfg', default_value=default_rviz_config_path,
+        'rviz_use', default_value=default_rviz_config_path,
         description='RViz config file path'
     )
 
@@ -53,7 +52,7 @@ def generate_launch_description():
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
-        arguments=['-d', rviz_cfg],
+        arguments=['-d', rviz_use],
         condition=IfCondition(rviz_use)
     )
 
