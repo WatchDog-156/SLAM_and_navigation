@@ -82,7 +82,7 @@ ament_package()
 install( TARGETS dlio_odom_node dlio_map_node
          DESTINATION lib/${PROJECT_NAME} 
 )
-install( DIRECTORY config launch
+install( DIRECTORY config launch rviz
          DESTINATION share/${PROJECT_NAME} 
 )
 
