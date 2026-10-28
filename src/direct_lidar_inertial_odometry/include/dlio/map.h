@@ -11,6 +11,7 @@
  ***********************************************************/
 
 #include "dlio/dlio.h"
+#include <filesystem>
 
 // ROS
 #include "rclcpp/rclcpp.hpp"
@@ -30,6 +31,7 @@ public:
   ~MapNode();
 
   void start();
+  void saveMapOnShutdown();
 
 private:
 

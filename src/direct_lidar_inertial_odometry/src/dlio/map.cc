@@ -12,6 +12,7 @@
 
 #include "dlio/map.h"
 #include "dlio/utils.h"
+#include <ament_index_cpp/get_package_prefix.hpp> 
 
 dlio::MapNode::MapNode(): Node("dlio_map_node") {
 
@@ -99,4 +100,47 @@ void dlio::MapNode::savePCD(std::shared_ptr<direct_lidar_inertial_odometry::srv:
   } else {
     std::cout << "failed" << std::endl;
   }
+}
+
+void dlio::MapNode::saveMapOnShutdown() {
+
+  if (!this->dlio_map || this->dlio_map->points.empty()) {
+    std::cout << "Map is empty, nothing to save." << std::endl;
+    return;
+  }
+
+  std::filesystem::path ws;
+  try {
+    std::filesystem::path prefix =
+        ament_index_cpp::get_package_prefix("direct_lidar_inertial_odometry");
+    if (prefix.filename() == "install")                   ws = prefix.parent_path();
+    else if (prefix.parent_path().filename() == "install") ws = prefix.parent_path().parent_path();
+    else                                                   ws = std::filesystem::current_path(); // fallback
+  } catch (const std::exception& e) {
+    std::cerr << "Cannot find package prefix: " << e.what() << std::endl;
+    ws = std::filesystem::current_path();
+  }
+
+  std::filesystem::path dir = ws / "maps" / "PCD";
+  std::error_code ec;
+  std::filesystem::create_directories(dir, ec);
+  if (ec) {
+    std::cerr << "Cannot create " << dir << ": " << ec.message() << std::endl;
+    return;
+  }
+
+  const std::string file = (dir / "dlio_map.pcd").string();
+  const float leaf = 0.1f;  // rozdzielczosc zapisywanej mapy [m]
+
+  std::cout << "Saving map to " << file << " ... "; std::cout.flush();
+
+  pcl::PointCloud<PointType>::Ptr m = std::make_shared<pcl::PointCloud<PointType>>(*this->dlio_map);
+
+  pcl::VoxelGrid<PointType> vg;
+  vg.setLeafSize(leaf, leaf, leaf);
+  vg.setInputCloud(m);
+  vg.filter(*m);
+
+  int ret = pcl::io::savePCDFileBinary(file, *m);
+  std::cout << (ret == 0 ? "done" : "failed") << std::endl;
 }

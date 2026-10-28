@@ -2,3 +2,9 @@ build/
 install/
 log/
 .vscode/
+maps/
+src/fast_lio/Log/*.png
+src/fast_lio/Log/*.txt
+src/fast_lio/Log/*.csv
+src/fast_lio/Log/*.pdf
+src/fast_lio/PCD/*.pcd

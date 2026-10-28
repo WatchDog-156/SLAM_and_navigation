@@ -20,6 +20,8 @@ int main(int argc, char** argv) {
   executor.add_node(node);
   executor.spin();
 
+  node->saveMapOnShutdown();
+  
   rclcpp::shutdown();
 
   return 0;
