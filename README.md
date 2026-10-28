@@ -9,11 +9,19 @@ source install/setup.bash
 ros2 launch unitree_lidar_ros2 launch.py
 ```
 
-## Odpalanie mapowania 3D
+## Odpalanie mapowania 3D (FAST-LIO)
 
 ```bash
 source install/setup.bash
 ros2 launch fast_lio mapping_l2.launch.py 
+```
+
+## Odpalanie mapowania 3D (DLIO)
+
+```bash
+source install/setup.bash
+ros2 launch direct_lidar_inertial_odometry dlio.launch.py \
+     rviz:=true pointcloud_topic:=/unilidar/cloud imu_topic:=/unilidar/imu
 ```
 
 ## Mapowanie 2D
