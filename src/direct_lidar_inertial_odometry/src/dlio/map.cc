@@ -130,7 +130,7 @@ void dlio::MapNode::saveMapOnShutdown() {
   }
 
   const std::string file = (dir / "dlio_map.pcd").string();
-  const float leaf = 0.1f;  // rozdzielczosc zapisywanej mapy [m]
+  const float leaf = 0.05f;  // rozdzielczosc zapisywanej mapy [m]
 
   std::cout << "Saving map to " << file << " ... "; std::cout.flush();
 

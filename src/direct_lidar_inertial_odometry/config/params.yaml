@@ -20,7 +20,7 @@
 
     map/waitUntilMove: true
     map/dense/filtered: false
-    map/sparse/leafSize: 0.2
+    map/sparse/leafSize: 0.05
 
     odom/gravity: 9.80665
     odom/computeTimeOffset: true
@@ -32,10 +32,10 @@
     odom/imu/bufferSize: 5000
 
     odom/preprocessing/cropBoxFilter/size: 0.4
-    odom/preprocessing/voxelFilter/res: 0.2
+    odom/preprocessing/voxelFilter/res: 0.1
 
-    odom/keyframe/threshD: 1.0
-    odom/keyframe/threshR: 45.0
+    odom/keyframe/threshD: 0.5
+    odom/keyframe/threshR: 20.0
 
     odom/submap/keyframe/knn: 10
     odom/submap/keyframe/kcv: 10
