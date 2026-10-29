@@ -203,7 +203,7 @@ void UnitreeLidarSDKNode::timer_callback()
             transformStamped.transform.rotation.y = imu.quaternion[2];
             transformStamped.transform.rotation.z = imu.quaternion[3];
             transformStamped.transform.rotation.w = imu.quaternion[0];
-            broadcaster_->sendTransform(transformStamped);
+            // broadcaster_->sendTransform(transformStamped);
 
             // publish tf from imu to lidar
             transformStamped.header.frame_id = imu_frame_; // 父坐标系
@@ -215,7 +215,7 @@ void UnitreeLidarSDKNode::timer_callback()
             transformStamped.transform.rotation.y = 0;
             transformStamped.transform.rotation.z = 0;
             transformStamped.transform.rotation.w = 1;
-            broadcaster_->sendTransform(transformStamped);
+            // broadcaster_->sendTransform(transformStamped);
         }
     }
     else if (result == LIDAR_POINT_DATA_PACKET_TYPE)

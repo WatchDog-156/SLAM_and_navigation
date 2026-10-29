@@ -16,8 +16,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
-HERE = os.path.dirname(os.path.realpath(__file__))
-
+pkg = get_package_share_directory('l2_mapping_2d')
 
 def quat_zy(yaw, pitch):
     """Kwaternion (x,y,z,w) dla R = Rz(yaw) * Ry(pitch)."""
@@ -79,7 +78,7 @@ def setup(context):
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(
                 get_package_share_directory('slam_toolbox'), 'launch', 'online_async_launch.py')),
-            launch_arguments={'slam_params_file': os.path.join(HERE, 'slam_toolbox.yaml'),
+            launch_arguments={'slam_params_file': os.path.join(pkg, 'config', 'slam_toolbox.yaml'),
                               'use_sim_time': 'false'}.items()),
     ]
     return nodes

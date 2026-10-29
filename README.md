@@ -38,7 +38,15 @@ ros2 launch ~/l2_slam2d/slam2d.launch.py \
      lidar_x:=0.25 lidar_y:=0.0 lidar_z:=0.80 lidar_pitch_deg:=15 lidar_yaw_deg:=0
 ```
 
-Odpalanie navigacji w nav2
+Uruchamiaj to razem z lidarem i mapping_l2.launch.py. W RViz ustaw Fixed Frame na map i dodaj Map (/map) oraz LaserScan (/scan).
+
+Zapis mapy
 ```bash
-ros2 run nav2_map_server map_saver_cli -f ~/src/l2_mapping_2d/maps/mapa
+ros2 run nav2_map_server map_saver_cli -f /home/jakub/Pulpit/SLAM_and_navigation/maps/mapa
+```
+
+Opcjonalnie graf pozycji, do dalszego mapowania lub lokalizacji w slam_toolbox
+```bash
+ros2 service call /slam_toolbox/serialize_map slam_toolbox/srv/SerializePoseGraph \
+  "{filename: '/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa_posegraph'}"
 ```
