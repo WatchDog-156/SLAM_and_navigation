@@ -80,8 +80,7 @@ def generate_launch_description():
         executable='rviz2',
         name='dlio_rviz',
         arguments=['-d', rviz_config_path],
-        output='screen',
-        condition=IfCondition(LaunchConfiguration('rviz'))
+        output='screen'
     )
 
     return LaunchDescription([
