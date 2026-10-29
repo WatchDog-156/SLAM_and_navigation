@@ -34,7 +34,7 @@ sudo apt install ros-jazzy-navigation2 ros-jazzy-nav2-bringup \
 
 Odpalanie mapowania 2D
 ```bash
-ros2 launch ~/l2_slam2d/slam2d.launch.py \
+ros2 launch mapping_2d slam2d.launch.py \
      lidar_x:=0.25 lidar_y:=0.0 lidar_z:=0.80 lidar_pitch_deg:=15 lidar_yaw_deg:=0
 ```
 
@@ -49,4 +49,10 @@ Opcjonalnie graf pozycji, do dalszego mapowania lub lokalizacji w slam_toolbox
 ```bash
 ros2 service call /slam_toolbox/serialize_map slam_toolbox/srv/SerializePoseGraph \
   "{filename: '/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa_posegraph'}"
+```
+
+## Nawigacja robota na podstawie mapy
+
+```bash
+
 ```
