@@ -1,12 +1,3 @@
-"""Nav2 (AMCL + MPPI) dla mapping_2d - wersja dla ROS 2 Jazzy.
-
-Uruchamia TYLKO wezly potrzebne do nawigacji po gotowej mapie. Pomija route_server,
-collision_monitor i docking_server, ktore bringup_launch.py z Jazzy startuje domyslnie,
-a dla ktorych nav2_params.yaml nie ma konfiguracji (lifecycle_manager przerywa wtedy start).
-
-Uzycie:
-  ros2 launch mapping_2d navigation.launch.py map:=/abs/path/map.yaml
-"""
 import os
 
 from ament_index_python.packages import get_package_share_directory
