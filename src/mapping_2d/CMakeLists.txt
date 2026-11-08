@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(l2_mapping_2d)
+project(mapping_2d)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -11,7 +11,7 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-install(DIRECTORY launch config
+install(DIRECTORY launch config rviz
         DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)

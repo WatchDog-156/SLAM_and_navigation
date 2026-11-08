@@ -20,8 +20,7 @@ ros2 launch fast_lio mapping_l2.launch.py
 
 ```bash
 source install/setup.bash
-ros2 launch direct_lidar_inertial_odometry dlio.launch.py \
-     rviz:=true pointcloud_topic:=/unilidar/cloud imu_topic:=/unilidar/imu
+ros2 launch direct_lidar_inertial_odometry dlio.launch.py
 ```
 
 ## Mapowanie 2D
@@ -34,7 +33,9 @@ sudo apt install ros-jazzy-navigation2 ros-jazzy-nav2-bringup \
 
 Odpalanie mapowania 2D
 ```bash
-ros2 launch mapping_2d slam2d.launch.py \
+ros2 launch mapping_2d slam2d.launch.py odometry:=dlio run_slam:=true
+
+ros2 launch mapping_2d slam2d.launch.py odometry:=dlio run_slam:=true \
      lidar_x:=0.25 lidar_y:=0.0 lidar_z:=0.80 lidar_pitch_deg:=15 lidar_yaw_deg:=0
 ```
 
