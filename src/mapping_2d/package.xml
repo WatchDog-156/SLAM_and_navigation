@@ -3,9 +3,9 @@
 <package format="3">
   <name>mapping_2d</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="borsukiewiczkuba12345@gmail.com">jakub</maintainer>
-  <license>TODO: License declaration</license>
+  <description>SLAM 2D from 3D LiDAR and navigation based on Nav2</description>
+  <maintainer email="borsukiewiczkuba12345@gmail.com">Jakub</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
