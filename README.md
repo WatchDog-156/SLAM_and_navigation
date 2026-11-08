@@ -59,3 +59,30 @@ ros2 launch mapping_2d slam2d.launch.py odometry:=dlio run_slam:=false
 ros2 launch mapping_2d navigation.launch.py map:=/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa.yaml
 
 ```
+
+## Instrukcja użycia do robota kroczącego Lite3
+
+Do połączenia się po Ethernet z robotem należy użyć
+```bash
+./connectRobot.sh
+```
+
+Następnie odpalamy paczkę
+```bash
+ros2 launch transfer transfer_launch.py 
+```
+
+Komendy do ruchu siad/wstań
+```bash
+ros2 topic pub --once /simple_cmd transfer_interfaces/msg/MotionSimpleCMD "{cmd_code: 1, size: 0, type: 1}"
+```
+
+Komendy ruchu można podawać za pomocą 
+```bash
+ros2 topic pub -r 10 /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+```
+
+Jeśli komendy nie działają (nie ma transfery między komputerem a robotem), należy sprawdzić czy na robocie w pliku jy_exe/conf/network.toml ip odbiorcy jest skonfigurowane poprawnie
+```bash
+ip = 192.168.5.100
+```
