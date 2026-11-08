@@ -72,7 +72,7 @@ ros2 run nav2_map_server map_saver_cli -f /home/jakub/Pulpit/SLAM_and_navigation
 Optionally, a pose graph, for further mapping or localization within slam_toolbox
 ```bash
 ros2 service call /slam_toolbox/serialize_map slam_toolbox/srv/SerializePoseGraph \
-  "{filename: '/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa_posegraph'}"
+     "{filename: '/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa_posegraph'}"
 ```
 
 ## Robot navigation based on map
