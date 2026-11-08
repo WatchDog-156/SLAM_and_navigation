@@ -32,14 +32,14 @@
     odom/imu/bufferSize: 5000
 
     odom/preprocessing/cropBoxFilter/size: 0.4
-    odom/preprocessing/voxelFilter/res: 0.1
+    odom/preprocessing/voxelFilter/res: 0.05
 
-    odom/keyframe/threshD: 0.5
-    odom/keyframe/threshR: 20.0
+    odom/keyframe/threshD: 0.2
+    odom/keyframe/threshR: 10.0
 
-    odom/submap/keyframe/knn: 10
-    odom/submap/keyframe/kcv: 10
-    odom/submap/keyframe/kcc: 10
+    odom/submap/keyframe/knn: 20
+    odom/submap/keyframe/kcv: 15
+    odom/submap/keyframe/kcc: 15
     odom/gicp/minNumPoints: 64
     odom/gicp/kCorrespondences: 16
     odom/gicp/maxCorrespondenceDistance: 0.5
