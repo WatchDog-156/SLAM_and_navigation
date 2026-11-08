@@ -55,5 +55,7 @@ ros2 service call /slam_toolbox/serialize_map slam_toolbox/srv/SerializePoseGrap
 ## Nawigacja robota na podstawie mapy
 
 ```bash
+ros2 launch mapping_2d slam2d.launch.py odometry:=dlio run_slam:=false
+ros2 launch mapping_2d navigation.launch.py map:=/home/jakub/Pulpit/SLAM_and_navigation/maps/mapa.yaml
 
 ```
